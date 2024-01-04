@@ -20,8 +20,11 @@ function nextSequence() {
 
 $(".btn").on("click", function () {
   const userChosenColour = this.id;
+  userClickedPattern.push(userChosenColour); 
+  console.log(userClickedPattern);
 });
 
-userClickedPattern.push(userChosenColour); 
+
+
 
 // $("#"+ randomChosenColour).animateHighlight("#dd0000", 1000);
