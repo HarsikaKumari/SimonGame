@@ -21,10 +21,19 @@ function playSound(name) {
   sound.play();
 }
 
+function animatePress(currentColour) {
+  $("#" + currentColour).addClass("pressed");
+
+  setTimeout(function () {
+    $("#" + currentColour).removeClass("pressed");
+  }, 100);
+  console.log(currentColour);
+}
+
 $(".btn").on("click", function () {
   const userChosenColour = this.id;
   userClickedPattern.push(userChosenColour);
-  playSound(userChosenColour);
-});
 
-// $("#"+ randomChosenColour).animateHighlight("#dd0000", 1000);
+  playSound(userChosenColour);
+  animatePress(userChosenColour);
+});
