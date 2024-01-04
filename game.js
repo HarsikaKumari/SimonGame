@@ -2,6 +2,14 @@ const buttonColours = ["red", "blue", "green", "yellow"];
 const gamePattern = [];
 const userClickedPattern = [];
 
+$(".btn").on("click", function () {
+  const userChosenColour = this.id;
+  userClickedPattern.push(userChosenColour);
+
+  playSound(userChosenColour);
+  animatePress(userChosenColour);
+});
+
 function nextSequence() {
   const randomNumber = Math.round(Math.random() * 10) % buttonColours.length;
   // const randomNumber = Math.round(Math.random()*(buttonColours.length-1));
@@ -29,11 +37,3 @@ function animatePress(currentColour) {
   }, 100);
   console.log(currentColour);
 }
-
-$(".btn").on("click", function () {
-  const userChosenColour = this.id;
-  userClickedPattern.push(userChosenColour);
-
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-});
