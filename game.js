@@ -12,19 +12,19 @@ function nextSequence() {
   const animation = $("#" + randomChosenColour)
     .fadeOut(100)
     .fadeIn(100);
-  console.log(animation);
 
-  const sound = new Audio(`./sounds/${randomChosenColour}.mp3`);
+  playSound(randomChosenColour);
+}
+
+function playSound(name) {
+  const sound = new Audio(`./sounds/${name}.mp3`);
   sound.play();
 }
 
 $(".btn").on("click", function () {
   const userChosenColour = this.id;
-  userClickedPattern.push(userChosenColour); 
-  console.log(userClickedPattern);
+  userClickedPattern.push(userChosenColour);
+  playSound(userChosenColour);
 });
-
-
-
 
 // $("#"+ randomChosenColour).animateHighlight("#dd0000", 1000);
