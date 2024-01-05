@@ -1,6 +1,8 @@
 const buttonColours = ["red", "blue", "green", "yellow"];
 const gamePattern = [];
 const userClickedPattern = [];
+var started = false;
+var level = 0;
 
 $(".btn").on("click", function () {
   const userChosenColour = this.id;
@@ -10,18 +12,29 @@ $(".btn").on("click", function () {
   animatePress(userChosenColour);
 });
 
+$(document).keypress(function() {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+});
+
 function nextSequence() {
   const randomNumber = Math.round(Math.random() * 10) % buttonColours.length;
   // const randomNumber = Math.round(Math.random()*(buttonColours.length-1));
-
+  
   const randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
-
+  
   const animation = $("#" + randomChosenColour)
-    .fadeOut(100)
-    .fadeIn(100);
-
+  .fadeOut(100)
+  .fadeIn(100);
+  
   playSound(randomChosenColour);
+  
+  level++; 
+  $("#level-title").text("Level " + level);
 }
 
 function playSound(name) {
@@ -35,5 +48,4 @@ function animatePress(currentColour) {
   setTimeout(function () {
     $("#" + currentColour).removeClass("pressed");
   }, 100);
-  console.log(currentColour);
 }
