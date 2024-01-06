@@ -1,5 +1,5 @@
 const buttonColours = ["red", "blue", "green", "yellow"];
-const gamePattern = [];
+var gamePattern = [];
 var userClickedPattern = [];
 var started = false;
 var level = 0;
@@ -67,5 +67,12 @@ function checkAnswer(currentLevel) {
     }, 200);
 
     $("#level-title").text("Game Over, Press Any Key to Restart");
-  }
+    $(document).keypress(startOver);
+  }  
+}
+
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  started = false;
 }
