@@ -13,7 +13,7 @@ $(".btn").on("click", function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
-$(document).keypress(function () {
+$(document).keypress||$(document).onClick(function () {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
