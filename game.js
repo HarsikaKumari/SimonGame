@@ -1,5 +1,3 @@
-import { start } from "./helperFunction";
-
 const buttonColours = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
@@ -14,8 +12,16 @@ $(".btn").on("click", function () {
   animatePress(userChosenColour);
   checkAnswer(userClickedPattern.length - 1);
 });
+function start() {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+}
 
-$(document).keypress(start).on("click", start);
+$(document).keypress(start);
+$(document).on("click", start);
 
 function nextSequence() {
   userClickedPattern = [];
