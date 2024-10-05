@@ -68,8 +68,9 @@ function checkAnswer(currentLevel) {
       $("body").removeClass("game-over");
     }, 200);
 
-    $("#level-title").text("Game Over, Press Any Key to Restart");
+    $("#level-title").text("Game Over!, Click or Press Any Key to Restart");
     $(document).keypress(startOver);
+    $(document).on("click", startOver);
   }
 }
 
