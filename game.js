@@ -1,3 +1,5 @@
+import { start } from "./helperFunction";
+
 const buttonColours = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userClickedPattern = [];
@@ -13,13 +15,7 @@ $(".btn").on("click", function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
-$(document).keypress||$(document).onClick(function () {
-  if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
-  }
-});
+$(document).keypress(start).on("click", start);
 
 function nextSequence() {
   userClickedPattern = [];
@@ -68,7 +64,7 @@ function checkAnswer(currentLevel) {
 
     $("#level-title").text("Game Over, Press Any Key to Restart");
     $(document).keypress(startOver);
-  }  
+  }
 }
 
 function startOver() {
